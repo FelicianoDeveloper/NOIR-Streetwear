@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="NOIR® — Independent streetwear. Wear your attitude."
+    />
+    <title>NOIR® — Wear Your Attitude</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./src/output.css" />
+    <script src="./js/main.js" defer></script>
+  </head>
+
+  <body class="bg-[#0B0B0B] text-[#F2F0EB] antialiased">
+    <!-- Announcement bar -->
+    <div class="bg-[#D92828] px-4 py-2 text-center">
+      <p class="text-[10px] font-bold uppercase tracking-[0.25em] sm:text-xs">
+        Independent by nature — Different by design.
+      </p>
+    </div>
+
+    <!-- Header -->
+    <header class="border-b border-white/10">
+      <nav
+        class="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-5 sm:px-10 lg:px-16"
+        aria-label="Navegação principal"
+      >
+        <a
+          href="#home"
+          class="font-[Barlow_Condensed] text-4xl font-black tracking-tighter"
+          aria-label="NOIR, página inicial"
+        >
+          NOIR<span class="text-[#D92828]">®</span>
+        </a>
+
+        <div class="hidden items-center gap-8 md:flex">
+          <a
+            href="#collection"
+            class="text-xs uppercase tracking-widest text-white/65 transition hover:text-white"
+          >
+            Collection
+          </a>
+          <a
+            href="#manifesto"
+            class="text-xs uppercase tracking-widest text-white/65 transition hover:text-white"
+          >
+            Manifesto
+          </a>
+          <a
+            href="#footer"
+            class="text-xs uppercase tracking-widest text-white/65 transition hover:text-white"
+          >
+            Contact
+          </a>
+        </div>
+
+        <button
+          id="cart-button"
+          type="button"
+          class="flex items-center gap-3 border border-white/20 px-4 py-3 text-xs font-bold uppercase tracking-widest transition hover:border-[#D92828]"
+          aria-label="Abrir carrinho"
+        >
+          Bag <span id="cart-count" class="text-[#D92828]">0</span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="home">
+      <!-- Hero -->
+      <section
+        class="mx-auto max-w-[1600px] px-5 pb-16 pt-10 sm:px-10 sm:pt-16 lg:px-16 lg:pb-24"
+      >
+        <div class="mb-5 flex items-center justify-between gap-4">
+          <p
+            class="text-[10px] uppercase tracking-[0.3em] text-white/50 sm:text-xs"
+          >
+            Independent Streetwear / Est. 2026
+          </p>
+
+          <p
+            class="text-[10px] uppercase tracking-[0.3em] text-white/50 sm:text-xs"
+          >
+            Drop 001 — Vol. 01
+          </p>
+        </div>
+
+        <h1
+          class="relative z-10 mb-[-0.03em] font-[Barlow_Condensed] text-[clamp(6rem,20vw,20rem)] font-black uppercase leading-[0.72] tracking-[-0.075em]"
+        >
+          NOT MADE<span class="text-[#D92828]">.</span>
+        </h1>
+
+        <div class="grid gap-8 pt-10 md:grid-cols-[1fr_2fr] md:items-end">
+          <div id="manifesto" class="max-w-sm">
+            <p
+              class="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-[#D92828]"
+            >
+              No rules. No uniform.
+            </p>
+
+            <p class="text-sm leading-7 text-white/65 sm:text-base">
+              We don't follow the culture. We create our own. Made for those who
+              were never meant to fit in.
+            </p>
+
+            <a
+              href="#collection"
+              class="mt-7 inline-flex items-center gap-4 border-b border-[#D92828] pb-3 text-xs font-bold uppercase tracking-[0.2em] transition hover:text-[#D92828]"
+            >
+              Explore the collection <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="relative">
+            <div
+              class="absolute left-4 top-4 z-10 border border-white/30 bg-black/50 px-3 py-2 text-[10px] uppercase tracking-[0.2em] backdrop-blur-sm sm:left-6 sm:top-6"
+            >
+              Uniform for the undefined
+            </div>
+
+            <img
+              src="./assets/images/noir-hero.jpg"
+              alt="Editorial de moda streetwear com estética urbana"
+              class="h-[380px] w-full object-cover object-center sm:h-[520px] lg:h-[650px]"
+            />
+
+            <div
+              class="mt-4 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-white/45"
+            >
+              <span>NOIR® Campaign / 001</span>
+              <span>Wear your attitude.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Brand ticker -->
+      <section
+        class="overflow-hidden border-y border-white/15 py-5"
+        aria-label="Manifesto da marca"
+      >
+        <div
+          class="flex min-w-max items-center gap-8 font-[Barlow_Condensed] text-4xl font-black uppercase tracking-tight sm:text-6xl"
+        >
+          <span>NO RULES</span>
+          <span class="text-[#D92828]">✳</span>
+          <span>NO UNIFORM</span>
+          <span class="text-[#D92828]">✳</span>
+          <span>OWN YOUR IDENTITY</span>
+          <span class="text-[#D92828]">✳</span>
+          <span>NO RULES</span>
+        </div>
+      </section>
+
+      <!-- Collection introduction -->
+      <section
+        id="collection"
+        class="mx-auto max-w-[1600px] px-5 py-20 sm:px-10 sm:py-28 lg:px-16"
+      >
+        <div
+          class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end"
+        >
+          <div>
+            <p
+              class="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-[#D92828]"
+            >
+              001 / The first drop
+            </p>
+
+            <h2
+              class="font-[Barlow_Condensed] text-6xl font-black uppercase leading-none tracking-tight sm:text-8xl"
+            >
+              The collection<span class="text-[#D92828]">.</span>
+            </h2>
+          </div>
+
+          <p class="max-w-xs text-sm leading-6 text-white/50">
+            Essential pieces. Uncompromising attitude. This is only the
+            beginning.
+          </p>
+        </div>
+        <div
+          class="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <div id="category-filters" class="flex flex-wrap gap-2">
+            <button
+              data-category="all"
+              class="filter-button border border-[#D92828] bg-[#D92828] px-4 py-3 text-xs font-bold uppercase tracking-widest"
+            >
+              All
+            </button>
+
+            <button
+              data-category="T-shirts"
+              class="filter-button border border-white/20 px-4 py-3 text-xs font-bold uppercase tracking-widest transition hover:border-[#D92828]"
+            >
+              T-shirts
+            </button>
+
+            <button
+              data-category="Hoodies"
+              class="filter-button border border-white/20 px-4 py-3 text-xs font-bold uppercase tracking-widest transition hover:border-[#D92828]"
+            >
+              Hoodies
+            </button>
+
+            <button
+              data-category="Pants"
+              class="filter-button border border-white/20 px-4 py-3 text-xs font-bold uppercase tracking-widest transition hover:border-[#D92828]"
+            >
+              Pants
+            </button>
+          </div>
+
+          <label
+            class="flex items-center gap-3 text-xs uppercase tracking-widest text-white/50"
+          >
+            Sort by
+
+            <select
+              id="sort-products"
+              class="border border-white/20 bg-[#0B0B0B] px-3 py-3 text-xs text-white outline-none focus:border-[#D92828]"
+            >
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+            </select>
+          </label>
+        </div>
+        <div
+          id="product-grid"
+          class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          <!-- JavaScript renderiza os produtos aqui. -->
+        </div>
+        <p
+          id="product-count"
+          class="mt-8 text-xs uppercase tracking-widest text-white/40"
+        ></p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      id="footer"
+      class="border-t border-white/10 px-5 py-10 sm:px-10 lg:px-16"
+    >
+      <div
+        class="mx-auto flex max-w-[1600px] flex-col justify-between gap-6 sm:flex-row sm:items-end"
+      >
+        <div>
+          <p
+            class="font-[Barlow_Condensed] text-5xl font-black tracking-tighter"
+          >
+            NOIR<span class="text-[#D92828]">®</span>
+          </p>
+          <p class="mt-2 text-xs uppercase tracking-widest text-white/40">
+            Wear your attitude.
+          </p>
+        </div>
+
+        <p class="text-xs uppercase tracking-widest text-white/40">
+          Independent by nature. © 2026 NOIR®.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Shopping Bag Drawer -->
+    <div id="cart-overlay" class="fixed inset-0 z-40 hidden bg-black/70"></div>
+
+    <aside
+      id="cart-drawer"
+      class="fixed right-0 top-0 z-50 flex h-full w-full max-w-md translate-x-full flex-col border-l border-white/10 bg-[#0B0B0B] transition-transform duration-300"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cart-title"
+      aria-hidden="true"
+      inert
+    >
+      <div
+        class="flex items-center justify-between border-b border-white/10 p-6"
+      >
+        <div>
+          <p class="text-[10px] uppercase tracking-[0.3em] text-[#D92828]">
+            NOIR® / Your selection
+          </p>
+          <h2 id="cart-title" class="mt-2 text-2xl font-black uppercase">
+            Shopping bag <span id="drawer-cart-count">(0)</span>
+          </h2>
+        </div>
+
+        <button
+          id="close-cart"
+          type="button"
+          class="p-2 text-2xl transition hover:text-[#D92828]"
+          aria-label="Fechar carrinho"
+        >
+          &times;
+        </button>
+      </div>
+
+      <div
+        id="cart-items"
+        class="flex-1 space-y-5 overflow-y-auto p-6"
+        aria-live="polite"
+      ></div>
+
+      <div class="border-t border-white/10 p-6">
+        <div class="flex items-center justify-between">
+          <span class="text-xs uppercase tracking-widest text-white/50">
+            Subtotal
+          </span>
+          <span id="cart-subtotal" class="text-lg font-bold">R$ 0,00</span>
+        </div>
+
+        <p class="mt-2 text-xs leading-5 text-white/40">
+          Frete e condições de entrega serão calculados na próxima etapa.
+        </p>
+
+        <button
+          id="checkout-button"
+          type="button"
+          disabled
+          class="mt-5 w-full bg-[#D92828] px-5 py-4 text-xs font-bold uppercase tracking-[0.2em] transition hover:bg-[#F2F0EB] hover:text-[#0B0B0B] disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          Proceed to checkout ↗
+        </button>
+
+        <button
+          id="continue-shopping"
+          type="button"
+          class="mt-4 w-full py-2 text-xs uppercase tracking-widest text-white/50 transition hover:text-white"
+        >
+          Continue shopping
+        </button>
+      </div>
+    </aside>
+  </body>
+</html>

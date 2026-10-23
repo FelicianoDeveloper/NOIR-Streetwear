@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0B0B0B" />
+
+    <title>Order Confirmed — NOIR® Streetwear</title>
+
+    <link rel="stylesheet" href="./src/output.css" />
+    <script src="./js/confirmation.js" defer></script>
+  </head>
+
+  <body class="min-h-screen bg-[#0B0B0B] text-[#F2F0EB] antialiased">
+    <header class="border-b border-white/10">
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6"
+      >
+        <a href="./index.html" class="text-3xl font-black tracking-tighter">
+          NOIR<span class="text-[#D92828]">®</span>
+        </a>
+
+        <span class="text-[10px] uppercase tracking-[0.25em] text-white/40">
+          Order status / 001
+        </span>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-6 py-16 md:py-24">
+      <section class="border-b border-white/10 pb-12 md:pb-16">
+        <div class="flex items-center gap-3">
+          <span
+            class="flex h-10 w-10 items-center justify-center rounded-full border border-[#D92828] text-[#D92828]"
+          >
+            ✓
+          </span>
+
+          <p class="text-xs uppercase tracking-[0.25em] text-[#D92828]">
+            Order received
+          </p>
+        </div>
+
+        <h1
+          class="mt-8 text-6xl font-black uppercase leading-[0.9] tracking-tight sm:text-8xl md:text-9xl"
+        >
+          IT'S<br />
+          <span class="text-[#D92828]">YOURS.</span>
+        </h1>
+
+        <p class="mt-6 max-w-xl text-sm leading-7 text-white/50 md:text-base">
+          Your selection has been recorded. Thank you for being part of the
+          NOIR® movement.
+        </p>
+
+        <div class="mt-10 grid gap-6 sm:grid-cols-2">
+          <div class="border border-white/10 p-5">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-white/40">
+              Order number
+            </p>
+            <p id="confirmation-order-number" class="mt-3 text-xl font-bold">
+              Loading...
+            </p>
+          </div>
+
+          <div class="border border-white/10 p-5">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-white/40">
+              Order total
+            </p>
+            <p id="confirmation-total" class="mt-3 text-xl font-bold">
+              R$ 0,00
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid gap-12 py-12 md:grid-cols-2 md:py-16">
+        <div>
+          <p class="text-xs uppercase tracking-[0.25em] text-[#D92828]">
+            01 / Order summary
+          </p>
+
+          <h2 class="mt-3 text-2xl font-black uppercase">
+            Your selection<span class="text-[#D92828]">.</span>
+          </h2>
+
+          <div id="confirmation-items" class="mt-8 space-y-5">
+            <p class="text-sm text-white/40">Loading order details...</p>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-xs uppercase tracking-[0.25em] text-[#D92828]">
+            02 / Delivery details
+          </p>
+
+          <h2 class="mt-3 text-2xl font-black uppercase">
+            Destination<span class="text-[#D92828]">.</span>
+          </h2>
+
+          <div
+            id="confirmation-customer"
+            class="mt-8 space-y-4 text-sm text-white/60"
+          >
+            <p>Loading customer details...</p>
+          </div>
+
+          <div class="mt-8 border-t border-white/10 pt-6">
+            <p class="text-xs leading-6 text-white/40">
+              This is a demonstration order. No payment has been processed and
+              no shipment has been scheduled.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-white/10 pt-8">
+        <a
+          href="./index.html"
+          class="inline-flex w-full items-center justify-center bg-[#D92828] px-6 py-5 text-xs font-bold uppercase tracking-[0.2em] text-white transition hover:bg-[#F2F0EB] hover:text-[#0B0B0B] sm:w-auto"
+        >
+          Back to NOIR® ↗
+        </a>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 px-6 py-8">
+      <div
+        class="mx-auto flex max-w-7xl flex-col gap-3 text-[10px] uppercase tracking-[0.2em] text-white/30 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <span>NOIR® Streetwear</span>
+        <span>Wear your identity.</span>
+      </div>
+    </footer>
+  </body>
+</html>

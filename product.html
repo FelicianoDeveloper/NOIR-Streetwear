@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Product — NOIR®</title>
+    <meta
+      name="description"
+      content="Discover the NOIR® streetwear collection."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./src/output.css" />
+    <script src="./js/product.js" defer></script>
+  </head>
+
+  <body class="min-h-screen bg-[#0B0B0B] text-[#F2F0EB] antialiased">
+    <header class="border-b border-white/10">
+      <nav
+        class="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-5 sm:px-10 lg:px-16"
+      >
+        <a
+          href="./index.html"
+          class="font-[Barlow_Condensed] text-4xl font-black tracking-tighter"
+        >
+          NOIR<span class="text-[#D92828]">®</span>
+        </a>
+
+        <a
+          href="./index.html#collection"
+          class="text-xs uppercase tracking-widest text-white/60 transition hover:text-white"
+        >
+          ← Back to collection
+        </a>
+
+        <button
+          id="product-cart-button"
+          type="button"
+          class="border border-white/20 px-4 py-3 text-xs font-bold uppercase tracking-widest hover:border-[#D92828]"
+        >
+          Bag <span id="product-cart-count" class="text-[#D92828]">0</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-[1600px] px-5 py-10 sm:px-10 sm:py-16 lg:px-16">
+      <p class="mb-8 text-[10px] uppercase tracking-[0.3em] text-white/40">
+        NOIR® / Collection 001 / <span id="breadcrumb-name">Product</span>
+      </p>
+
+      <div id="product-detail" class="grid gap-10 lg:grid-cols-2 lg:gap-16">
+        <p class="text-sm text-white/50">Loading product...</p>
+      </div>
+
+      <section class="mt-24 border-t border-white/10 py-10">
+        <p class="text-xs uppercase tracking-[0.3em] text-[#D92828]">
+          NO RULES. NO UNIFORM.
+        </p>
+        <h2
+          class="mt-4 font-[Barlow_Condensed] text-5xl font-black uppercase sm:text-7xl"
+        >
+          Wear your attitude<span class="text-[#D92828]">.</span>
+        </h2>
+      </section>
+    </main>
+    <div id="cart-overlay" class="fixed inset-0 z-40 hidden bg-black/70"></div>
+
+    <aside
+      id="cart-drawer"
+      class="fixed right-0 top-0 z-50 flex h-full w-full max-w-md translate-x-full flex-col border-l border-white/10 bg-[#0B0B0B] transition-transform duration-300"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cart-title"
+      aria-hidden="true"
+      inert
+    >
+      <div
+        class="flex items-center justify-between border-b border-white/10 p-6"
+      >
+        <div>
+          <p class="text-[10px] uppercase tracking-[0.3em] text-[#D92828]">
+            NOIR® / Your selection
+          </p>
+          <h2 id="cart-title" class="mt-2 text-2xl font-black uppercase">
+            Shopping bag <span id="drawer-cart-count">(0)</span>
+          </h2>
+        </div>
+
+        <button
+          id="close-cart"
+          type="button"
+          class="p-2 text-2xl transition hover:text-[#D92828]"
+          aria-label="Fechar carrinho"
+        >
+          &times;
+        </button>
+      </div>
+
+      <div
+        id="cart-items"
+        class="flex-1 space-y-5 overflow-y-auto p-6"
+        aria-live="polite"
+      ></div>
+
+      <div class="border-t border-white/10 p-6">
+        <div class="flex items-center justify-between">
+          <span class="text-xs uppercase tracking-widest text-white/50">
+            Subtotal
+          </span>
+          <span id="cart-subtotal" class="text-lg font-bold">R$ 0,00</span>
+        </div>
+
+        <p class="mt-2 text-xs leading-5 text-white/40">
+          Frete e condições de entrega serão calculados na próxima etapa.
+        </p>
+
+        <button
+          id="checkout-button"
+          type="button"
+          disabled
+          class="mt-5 w-full bg-[#D92828] px-5 py-4 text-xs font-bold uppercase tracking-[0.2em] transition hover:bg-[#F2F0EB] hover:text-[#0B0B0B] disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          Proceed to checkout ↗
+        </button>
+
+        <button
+          id="continue-shopping"
+          type="button"
+          class="mt-4 w-full py-2 text-xs uppercase tracking-widest text-white/50 transition hover:text-white"
+        >
+          Continue shopping
+        </button>
+      </div>
+    </aside>
+  </body>
+</html>
