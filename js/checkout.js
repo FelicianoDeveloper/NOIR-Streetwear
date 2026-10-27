@@ -62,13 +62,15 @@ function getValidItems() {
         return null;
       }
 
-      const allowedSizes = ["XS", "S", "M", "L", "XL"];
-      const size = String(item.size || "M").toUpperCase();
+           const size = String(item.size || "M").toUpperCase();
+
+      const allowedSizes = Array.isArray(product.sizes)
+        ? product.sizes
+        : ["XS", "S", "M", "L", "XL"];
 
       if (!allowedSizes.includes(size)) {
         return null;
       }
-
       return {
         id: product.id,
         name: product.name,

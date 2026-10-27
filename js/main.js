@@ -432,42 +432,4 @@ checkoutButton.addEventListener("click", () => {
 
   window.location.href = "./checkout.html";
 });
-
-
-const header = document.querySelector("header");
-
-if (cartButton && header) {
-  const placeholder = document.createElement("div");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 100) {
-      const rect = cartButton.getBoundingClientRect();
-
-      if (!cartButton.classList.contains("cart-floating")) {
-        placeholder.style.width = `${rect.width}px`;
-        placeholder.style.height = `${rect.height}px`;
-        cartButton.parentElement.insertBefore(placeholder, cartButton);
-        cartButton.classList.add("cart-floating");
-      }
-
-      cartButton.style.position = "fixed";
-      cartButton.style.top = "24px";
-      cartButton.style.right = "24px";
-      cartButton.style.zIndex = "50";
-      cartButton.style.backgroundColor = "#0B0B0B";
-    } else {
-      cartButton.classList.remove("cart-floating");
-      cartButton.style.position = "";
-      cartButton.style.top = "";
-      cartButton.style.right = "";
-      cartButton.style.zIndex = "";
-      cartButton.style.backgroundColor = "";
-
-      if (placeholder.parentElement) {
-        placeholder.remove();
-      }
-    }
-  });
-}
-  
 }
