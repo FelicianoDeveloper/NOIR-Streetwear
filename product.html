@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,35 +10,45 @@
       content="Discover the NOIR® streetwear collection."
     />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
 
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230B0B0B'/%3E%3Ctext x='30' y='47' font-family='Times New Roman,serif' font-size='46' font-weight='900' text-anchor='middle' fill='%23F2F0EB'%3EN%3C/text%3E%3Ccircle cx='51' cy='49' r='5' fill='%23D92828'/%3E%3C/svg%3E" />
+    <meta name="theme-color" content="#0B0B0B" />
+    <script>
+      document.documentElement.classList.add("js");
+      setTimeout(function () {
+        if (!document.documentElement.classList.contains("motion-ok")) {
+          document.documentElement.classList.add("motion-failsafe");
+        }
+      }, 3500);
+    </script>
     <link rel="stylesheet" href="./src/output.css" />
+    <link rel="stylesheet" href="./src/site.css" />
+    <link rel="stylesheet" href="./src/motion.css" />
+    <script src="./js/motion.js" defer></script>
+    <script src="./js/store.js" defer></script>
+    <script src="./js/cart-drawer.js" defer></script>
     <script src="./js/product.js" defer></script>
     <script src="./js/cart-scroll.js" defer></script>
   </head>
 
   <body class="min-h-screen bg-[#0B0B0B] text-[#F2F0EB] antialiased">
+    <a href="#main" class="skip-link">Skip to content</a>
     <header class="border-b border-white/10">
       <nav
         class="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-5 sm:px-10 lg:px-16"
       >
         <a
           href="./index.html"
-          class="font-[Barlow_Condensed] text-4xl font-black tracking-tighter"
+          class="tap font-display text-4xl font-black tracking-tighter"
         >
           NOIR<span class="text-[#D92828]">®</span>
         </a>
 
         <a
           href="./index.html#collection"
-          class="text-xs uppercase tracking-widest text-white/60 transition hover:text-white"
+          class="u-line tap text-xs uppercase tracking-widest text-white/60 transition hover:text-white"
         >
-          ← Back to collection
+          ← Back<span class="back-long"> to collection</span>
         </a>
 
         <button
@@ -51,8 +61,8 @@
       </nav>
     </header>
 
-    <main class="mx-auto max-w-[1600px] px-5 py-10 sm:px-10 sm:py-16 lg:px-16">
-      <p class="mb-8 text-[10px] uppercase tracking-[0.3em] text-white/40">
+    <main id="main" class="mx-auto max-w-[1600px] px-5 py-10 sm:px-10 sm:py-16 lg:px-16">
+      <p data-intro class="mb-8 text-[10px] uppercase tracking-[0.3em] text-white/40">
         NOIR® / Collection 001 / <span id="breadcrumb-name">Product</span>
       </p>
 
@@ -61,16 +71,40 @@
       </div>
 
       <section class="mt-24 border-t border-white/10 py-10">
-        <p class="text-xs uppercase tracking-[0.3em] text-[#D92828]">
+        <p data-reveal class="text-xs uppercase tracking-[0.3em] text-[#D92828]">
           NO RULES. NO UNIFORM.
         </p>
         <h2
-          class="mt-4 font-[Barlow_Condensed] text-5xl font-black uppercase sm:text-7xl"
+          data-split
+          style="--d: 100"
+          class="fit-display mt-4 font-display text-5xl font-black uppercase sm:text-7xl"
         >
           Wear your attitude<span class="text-[#D92828]">.</span>
         </h2>
       </section>
     </main>
+
+    <footer class="border-t border-white/10 px-5 py-10 sm:px-10 lg:px-16">
+      <div
+        class="mx-auto flex max-w-[1600px] flex-col justify-between gap-6 sm:flex-row sm:items-end"
+      >
+        <div>
+          <p
+            data-split
+            class="font-display text-5xl font-black tracking-tighter"
+          >
+            NOIR<span class="text-[#D92828]">®</span>
+          </p>
+          <p class="mt-2 text-xs uppercase tracking-widest text-white/40">
+            Wear your attitude.
+          </p>
+        </div>
+
+        <p class="text-xs uppercase tracking-widest text-white/40">
+          Independent by nature. © 2026 NOIR®.
+        </p>
+      </div>
+    </footer>
     <div id="cart-overlay" class="fixed inset-0 z-40 hidden bg-black/70"></div>
 
     <aside
@@ -98,7 +132,7 @@
           id="close-cart"
           type="button"
           class="p-2 text-2xl transition hover:text-[#D92828]"
-          aria-label="Fechar carrinho"
+          aria-label="Close bag"
         >
           &times;
         </button>
@@ -118,7 +152,7 @@
           <span id="cart-subtotal" class="text-lg font-bold">R$ 0,00</span>
         </div>
 
-        <p class="mt-2 text-xs leading-5 text-white/40">
+        <p lang="pt-BR" class="mt-2 text-xs leading-5 text-white/40">
           Frete e condições de entrega serão calculados na próxima etapa.
         </p>
 

@@ -1056,6 +1056,10 @@
     }
   }
 }
+html, body {
+  width: 100%;
+  margin: 0;
+}
 @property --tw-translate-x {
   syntax: "*";
   inherits: false;

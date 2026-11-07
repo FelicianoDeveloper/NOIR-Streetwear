@@ -15,11 +15,8 @@ const customerContainer = document.querySelector(
   "#confirmation-customer"
 );
 
-const formatPrice = (price) =>
-  Number(price).toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  });
+// Formatação de preço vinda do store.js (carregado antes deste arquivo).
+const { money: formatPrice } = window.NoirStore;
 
 function loadConfirmation() {
   let order;
@@ -59,6 +56,24 @@ function loadConfirmation() {
   }
   orderNumberElement.textContent = order.orderNumber;
   totalElement.textContent = formatPrice(order.total);
+
+  // Motion: o número "decodifica", o total conta e o confete explode uma vez por pedido.
+  window.NoirMotion?.scramble(orderNumberElement, order.orderNumber, 1000);
+  window.NoirMotion?.countTo(totalElement, Number(order.total), formatPrice, 1400);
+
+  try {
+    const confettiKey = `noir-confetti-${order.orderNumber}`;
+
+    if (!sessionStorage.getItem(confettiKey)) {
+      sessionStorage.setItem(confettiKey, "1");
+      setTimeout(
+        () => window.NoirMotion?.confetti(document.querySelector(".check-wrap")),
+        900
+      );
+    }
+  } catch {
+    /* sessionStorage indisponível: só não tem confete */
+  }
 itemsContainer.replaceChildren();
 order.items.forEach((item) => {
   const row = document.createElement("div");

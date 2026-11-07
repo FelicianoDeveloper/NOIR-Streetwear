@@ -1,30 +1,6 @@
 
-const products = [
-  {
-    id: 1,
-    name: "VOID OVERSIZED TEE",
-    price: 149.90,
-    image: "./assets/images/void-tee.jpg"
-  },
-  {
-    id: 2,
-    name: "AFTER DARK HOODIE",
-    price: 289.90,
-    image: "./assets/images/after-dark-hoodie.jpg"
-  },
-  {
-    id: 3,
-    name: "DISTRICT CARGO",
-    price: 259.90,
-    image: "./assets/images/district-cargo.jpg"
-  },
-  {
-    id: 4,
-    name: "NO SIGNAL TEE",
-    price: 129.90,
-    image: "./assets/images/no-signal-tee.jpg"
-  }
-];
+// Catálogo, preços e leitura da sacola vêm do store.js (carregado antes deste arquivo).
+const { money: formatPrice, loadCart, lines } = window.NoirStore;
 
 const cartContainer = document.querySelector("#checkout-items");
 const subtotalElement = document.querySelector("#checkout-subtotal");
@@ -32,56 +8,8 @@ const totalElement = document.querySelector("#checkout-total");
 const checkoutForm = document.querySelector("#checkout-form");
 const errorElement = document.querySelector("#checkout-error");
 
-const formatPrice = (price) =>
-  price.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  });
-
-function getCart() {
-  try {
-    const cart = JSON.parse(localStorage.getItem("noir-cart")) || [];
-    return Array.isArray(cart) ? cart : [];
-  } catch {
-    return [];
-  }
-}
-
-function getValidItems() {
-  return getCart()
-    .map((item) => {
-      const product = products.find(
-        (product) => product.id === Number(item.id)
-      );
-
-      if (!product) return null;
-
-      const quantity = Math.floor(Number(item.quantity));
-
-      if (!Number.isFinite(quantity) || quantity < 1) {
-        return null;
-      }
-
-           const size = String(item.size || "M").toUpperCase();
-
-      const allowedSizes = Array.isArray(product.sizes)
-        ? product.sizes
-        : ["XS", "S", "M", "L", "XL"];
-
-      if (!allowedSizes.includes(size)) {
-        return null;
-      }
-      return {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        quantity,
-        size
-      };
-    })
-    .filter(Boolean);
-}
+// Itens válidos da sacola (produto, preço e tamanho conferidos no store.js).
+const getValidItems = () => lines(loadCart());
 
 function renderCheckout() {
   const validItems = getValidItems();
@@ -95,7 +23,7 @@ function renderCheckout() {
         Your bag is empty.
       </p>
       <a href="./index.html#collection"
-         class="inline-block text-xs uppercase tracking-widest text-[#D92828] underline underline-offset-4">
+         class="tap inline-block text-xs uppercase tracking-widest text-[#D92828] underline underline-offset-4">
         Explore the collection ↗
       </a>
     `;
@@ -138,6 +66,9 @@ function renderCheckout() {
 
   subtotalElement.textContent = formatPrice(subtotal);
   totalElement.textContent = formatPrice(subtotal);
+
+  // Motion: o total "conta" até o valor final.
+  window.NoirMotion?.countTo(totalElement, subtotal, formatPrice, 1200);
 
   submitButton.disabled = false;
   submitButton.classList.remove("opacity-40", "cursor-not-allowed");
@@ -195,9 +126,23 @@ checkoutForm.addEventListener("submit", (event) => {
     status: "demo"
   };
 
+  const submitButton = checkoutForm.querySelector('button[type="submit"]');
+
   try {
     localStorage.setItem("noir-last-order", JSON.stringify(order));
-    window.location.href = "./confirmation.html";
+
+    // Motion: estado de "processando" antes de abrir a confirmação.
+    submitButton.disabled = true;
+    submitButton.classList.add("btn-loading");
+    submitButton.textContent = "Placing order…";
+
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? 0
+      : 900;
+
+    setTimeout(() => {
+      window.location.href = "./confirmation.html";
+    }, delay);
   } catch {
     errorElement.textContent =
       "We couldn't save your order. Please try again.";
@@ -206,3 +151,13 @@ checkoutForm.addEventListener("submit", (event) => {
 });
 
 renderCheckout();
+
+// Se a pessoa voltar com o botão "voltar" do navegador, o botão não fica travado.
+window.addEventListener("pageshow", (event) => {
+  if (!event.persisted) return;
+
+  const button = checkoutForm.querySelector('button[type="submit"]');
+  button.disabled = false;
+  button.classList.remove("btn-loading");
+  button.textContent = "Review order ↗";
+});

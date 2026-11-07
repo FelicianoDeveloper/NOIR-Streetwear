@@ -1,0 +1,128 @@
+/* ==========================================================================
+   NOIR® — SITE LAYER
+   Base compartilhada + correções de layout/celular.
+   CSS puro, carregado DEPOIS de src/output.css (o `npm run build` não mexe aqui).
+   Ordem nas páginas:  output.css  →  site.css  →  motion.css
+   ========================================================================== */
+
+:root {
+  /* Fonte dos títulos: troque aqui e o site inteiro muda. */
+  --font-display: "Times New Roman", Times, serif;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* --------------------------------------------------------------------------
+   Acessibilidade
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: #d92828;
+  color: #fff;
+  padding: 0.85rem 1.1rem;
+  font:
+    700 12px/1 system-ui,
+    sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+:focus-visible {
+  outline: 2px solid #d92828;
+  outline-offset: 3px;
+}
+
+/* Quebra de linha equilibrada em títulos (sem palavra órfã) */
+h1,
+h2,
+h3,
+.announce {
+  text-wrap: balance;
+}
+
+/* --------------------------------------------------------------------------
+   CELULAR — correções
+   -------------------------------------------------------------------------- */
+
+/* 1. Títulos gigantes não podem passar da largura da tela
+      (ex.: "COLLECTION." era cortado em 390px). */
+@media (max-width: 639px) {
+  .fit-display {
+    font-size: clamp(2.5rem, 12.4vw, 3.75rem);
+  }
+}
+
+/* 2. Cabeçalho: botão da sacola nunca quebra em 2 linhas;
+      no celular "← Back to collection" vira "← Back". */
+#cart-button,
+#product-cart-button {
+  white-space: nowrap;
+}
+@media (max-width: 479px) {
+  .back-long {
+    display: none;
+  }
+}
+
+/* 3. Sacola flutuante (cart-scroll.js): posição definida aqui, mais perto da borda no celular. */
+.is-floating {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 50;
+  background-color: #0b0b0b;
+}
+@media (max-width: 639px) {
+  .is-floating {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+/* 4. iPhone dá zoom automático ao tocar num campo com fonte menor que 16px. */
+@media (hover: none) and (pointer: coarse) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* 5. Alvos de toque de pelo menos ~44px, sem mexer no layout (área invisível ao redor). */
+@media (pointer: coarse) {
+  .tap {
+    position: relative;
+  }
+  .tap::before {
+    content: "";
+    position: absolute;
+    inset: -12px -8px;
+  }
+  .qty-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* 6. Sacola (drawer): usa a altura REAL da tela no celular (a barra do Safari não esconde o botão de checkout)
+      e o scroll da lista não "vaza" para a página. */
+@supports (height: 100dvh) {
+  #cart-drawer {
+    height: 100dvh;
+  }
+}
+#cart-items {
+  overscroll-behavior: contain;
+}
+html:has(body.overflow-hidden) {
+  overflow: hidden;
+}
